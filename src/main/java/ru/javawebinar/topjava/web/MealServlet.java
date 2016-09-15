@@ -27,8 +27,8 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class MealServlet extends HttpServlet {
     private static final Logger LOG = getLogger(MealServlet.class);
     private DaoMemoryImpl dao;
-    private static String INSERT_OR_EDIT = "meal.jsp";
-    private static String LIST_MEALS = "mealList.jsp";
+    private static String INSERT_OR_EDIT = "/meal.jsp";
+    private static String LIST_MEALS = "/mealList.jsp";
 
     public MealServlet() {
         super();
