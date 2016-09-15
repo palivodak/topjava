@@ -15,7 +15,7 @@
     <title>Adding new meal</title>
 </head>
 <body>
-
+<h2>Add or insert user</h2>
 
 <form method="post" action='meals'  name="frmAddMeal">
     Id : <input
@@ -23,7 +23,7 @@
         value="<c:out value="${meal.getId()}"/>"/> <br />
     Time of Meal : <input
         type="datetime" name="dateTime"
-        value="<c:out value="${meal.getDateTime().toLocalDate()} ${meal.getDateTime().toLocalTime()}"/>" /> <br />
+        value="${meal.getDateTime().toLocalDate()} ${meal.getDateTime().toLocalTime()}" /> <br />
     Description : <input
         type="text" name="mealDescription"
         value="<c:out value="${meal.getDescription()}"/>"/> <br />
@@ -33,5 +33,6 @@
      <input
         type="submit" value="Submit" />
 </form>
+<h2><a href="meals?action=mealsList">Meals List</a></h2>
 </body>
 </html>

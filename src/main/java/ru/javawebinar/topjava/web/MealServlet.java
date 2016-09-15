@@ -58,12 +58,14 @@ public class MealServlet extends HttpServlet {
             forward = INSERT_OR_EDIT;
         }
 
+
         RequestDispatcher view = req.getRequestDispatcher(forward);
         view.forward(req, resp);
 
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         Meal meal= new Meal();
         String mealId=req.getParameter("mealId");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
