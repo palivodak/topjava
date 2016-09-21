@@ -95,4 +95,6 @@ public class User extends NamedEntity {
                 ", caloriesPerDay=" + caloriesPerDay +
                 ')';
     }
+
+    public boolean isNew(){return id==null;}
 }

@@ -1,3 +1,5 @@
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.LocalTime" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -13,13 +15,42 @@
         .exceeded {
             color: red;
         }
+        .div1 { display: inline-block; }
+
     </style>
+
 </head>
 <body>
 <section>
+
     <h2><a href="index.html">Home</a></h2>
     <h3>Meal list</h3>
     <a href="meals?action=create">Add Meal</a>
+    <form method="post" action="meals?filter=true">
+        <div class="div1">
+        <dl>
+            <dt>StartDate:</dt>
+            <dd><input type="date" value="<%=LocalDate.now()%>" name="startDate"></dd>
+        </dl>
+        <dl>
+            <dt>EndDate:</dt>
+            <dd><input type="date" value="<%=LocalDate.now()%>" name="endDate"></dd>
+        </dl>
+        </div>
+        <div class="div1">
+        <dl>
+            <dt>StartTime:</dt>
+            <dd><input type="time" value="<%=LocalTime.MIN%>" name="startTime"></dd>
+        </dl>
+        <dl>
+            <dt>EndTime:</dt>
+            <dd><input type="time" value="23:59" name="endTime"></dd>
+        </dl>
+        </div>
+        <br>
+        <button type="submit">Filter</button>
+        <button onclick="window.history.back()">Cancel</button>
+    </form>
     <hr>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
@@ -32,7 +63,7 @@
         </tr>
         </thead>
         <c:forEach items="${mealList}" var="meal">
-            <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
+            <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.to.MealWithExceed"/>
             <tr class="${meal.exceed ? 'exceeded' : 'normal'}">
                 <td>
                         <%--${meal.dateTime.toLocalDate()} ${meal.dateTime.toLocalTime()}--%>
